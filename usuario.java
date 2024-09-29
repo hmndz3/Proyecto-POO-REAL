@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Usuario {
     private String nombre;
@@ -19,7 +21,7 @@ public class Usuario {
             System.out.println("Error al guardar el usuario.");
         }
     }
-    
+
     public static boolean login(String correo, String contrasena) {
         try (BufferedReader reader = new BufferedReader(new FileReader("usuarios.csv"))) {
             String linea;
@@ -35,5 +37,31 @@ public class Usuario {
         }
         System.out.println("Credenciales incorrectas.");
         return false;
+    }
+
+    public static void cambiarDatos(String correo, String nuevoNombre, String nuevaContrasena) {
+        List<String> usuarios = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader("usuarios.csv"))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] datos = linea.split(",");
+                if (datos[1].equals(correo)) {
+                    datos[0] = nuevoNombre;
+                    datos[2] = nuevaContrasena;
+                }
+                usuarios.add(String.join(",", datos));
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo.");
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios.csv"))) {
+            for (String usuario : usuarios) {
+                writer.write(usuario);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error al actualizar el archivo.");
+        }
     }
 }
