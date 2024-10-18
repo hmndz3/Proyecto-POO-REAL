@@ -1,11 +1,13 @@
 public class Horario 
 {
+//Atributos de la clase 'Horario.'
     private int identificador;          
     private String correousuario;       
     private int identificadorclase;     
     private String fecha;              
     private String hora;               
-
+//--------------------------------------------------------------------------  
+//Constructor de la clase Horario.
     public Horario(int identificador, String correousuario, int identificadorclase, String fecha, String hora) {
         this.identificador = identificador;
         this.correousuario = correousuario;
@@ -13,8 +15,8 @@ public class Horario
         this.fecha = fecha;
         this.hora = hora;
     }
-
-    
+//--------------------------------------------------------------------------  
+//Getters de la clase Horario
     public int getIdentificador() {
         return identificador;
     }
@@ -34,8 +36,8 @@ public class Horario
     public String getHora() {
         return hora;
     }
-
-    
+//--------------------------------------------------------------------------  
+//ToString de la clase Horario
     @Override
     public String toString() {
         return "Horario{" +
@@ -46,4 +48,5 @@ public class Horario
                ", hora='" + hora + '\'' +
                '}';
     }
+//--------------------------------------------------------------------------  
 }

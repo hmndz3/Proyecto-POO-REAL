@@ -2,15 +2,19 @@ import java.util.ArrayList;
 
 public class Sistema 
 {
+//Atributos de la clase sistema.
     private ArrayList<Usuario> listausuarios;    
     private ArrayList<Clase> listaclases;   
     private ArrayList<Horario> horarios;     
-
+//--------------------------------------------------------------------------  
+//Constructor de la clase sistema que inicializa las listas.
     public Sistema() {
         this.listausuarios = new ArrayList<>();
         this.listaclases = new ArrayList<>();
         this.horarios = new ArrayList<>();
     }
+//--------------------------------------------------------------------------  
+//Funcion que recorre la lista de clases hy las imprime para ver se una el ToString de la clase 'clase'
     public void mostrarClasesDisponibles() {
         if (listaclases.isEmpty()) {
             System.out.println("No hay clases disponibles.");
@@ -21,11 +25,14 @@ public class Sistema
             }
         }
     }
+//--------------------------------------------------------------------------  
 
+//Se usa para declarar las clases en el main. Cambiar para el usuario administrador.
     public void agregarClase(Clase clase) {
         listaclases.add(clase);
     }
-
+//--------------------------------------------------------------------------  
+//Funcion para inscribir la clase al usuario, arreglar para guardar en CSV y por correo.
     public void inscribirClase(String correoUsuario, String codigoClase) {
         Clase claseSeleccionada = null;
         for (Clase clase : listaclases) {
@@ -35,7 +42,6 @@ public class Sistema
             }
         }
         if (claseSeleccionada != null) {
-            // Crear nuevo horario y agregarlo a la lista de horarios del usuario
             Horario nuevoHorario = new Horario(horarios.size() + 1, correoUsuario, claseSeleccionada.getIdentificador(), claseSeleccionada.getHorario(), claseSeleccionada.getHorario());
             horarios.add(nuevoHorario);
             System.out.println("Clase inscrita con éxito: " + claseSeleccionada.getNombre());
@@ -43,6 +49,8 @@ public class Sistema
             System.out.println("Clase no encontrada.");
         }
     }
+//--------------------------------------------------------------------------  
+//Funcion para tener los horaruos de los usuarios.
     public ArrayList<Horario> obtenerHorariosUsuario(String correoUsuario) {
         ArrayList<Horario> horariosUsuario = new ArrayList<>();
         for (Horario horario : horarios) {
@@ -52,6 +60,8 @@ public class Sistema
         }
         return horariosUsuario;
     }
+//--------------------------------------------------------------------------  
+//Funcion para imprimir los horarios de los usuarios.
     public void mostrarHorarioUsuario(String correoUsuario) {
         ArrayList<Horario> horariosUsuario = obtenerHorariosUsuario(correoUsuario);
 
@@ -75,6 +85,8 @@ public class Sistema
             }
         }
     }
+//--------------------------------------------------------------------------  
+//Funcion para desasignar clase.
     public void desasignarClase(String correoUsuario, String codigoClase) {
         Horario horarioAEliminar = null;
 
@@ -104,4 +116,5 @@ public class Sistema
         }
         return null; 
     }
+//--------------------------------------------------------------------------  
 }

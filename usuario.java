@@ -2,17 +2,21 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Usuario {
+public class Usuario 
+{
+//Atributos de la clase Usuario
     private String nombre;
     private String correo;
     private String contrasena;
-
+//--------------------------------------------------------------------------  
+//Constructor de la lase Usuario
     public Usuario(String nombre, String correo, String contrasena) {
         this.nombre = nombre;
         this.correo = correo;
         this.contrasena = contrasena;
     }
-
+//--------------------------------------------------------------------------  
+//Funcion de registrar al usuario y crea el CSV con el nombre de 'usuarios'.
     public void registrarUsuario() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios.csv", true))) {
             writer.write(nombre + "," + correo + "," + contrasena);
@@ -21,7 +25,9 @@ public class Usuario {
             System.out.println("Error al guardar el usuario.");
         }
     }
-
+//--------------------------------------------------------------------------  
+//Funcion de Log In de los usuarios donde recorrre el CSV para confirmar la contrasena y correo.
+//Falta validaciones para solo poder poner el dominio de '@uvg.edu.gt'
     public static boolean login(String correo, String contrasena) {
         try (BufferedReader reader = new BufferedReader(new FileReader("usuarios.csv"))) {
             String linea;
@@ -38,7 +44,8 @@ public class Usuario {
         System.out.println("Credenciales incorrectas.");
         return false;
     }
-
+//--------------------------------------------------------------------------  
+//Funcion para cambiar los datos de los usuarios en este caso solo su nombre y contrasena.
     public static void cambiarDatos(String correo, String nuevoNombre, String nuevaContrasena) {
         List<String> usuarios = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("usuarios.csv"))) {
@@ -64,4 +71,5 @@ public class Usuario {
             System.out.println("Error al actualizar el archivo.");
         }
     }
+    //--------------------------------------------------------------------------  
 }
