@@ -75,4 +75,33 @@ public class Sistema
             }
         }
     }
+    public void desasignarClase(String correoUsuario, String codigoClase) {
+        Horario horarioAEliminar = null;
+
+      
+        for (Horario horario : horarios) {
+            if (horario.getCorreousuario().equals(correoUsuario) && 
+                getCodigoclaseDeHorario(horario).equals(codigoClase)) {
+                horarioAEliminar = horario;
+                break;
+            }
+        }
+
+        
+        if (horarioAEliminar != null) {
+            horarios.remove(horarioAEliminar);
+            System.out.println("Clase desasignada con éxito.");
+        } else {
+            System.out.println("No se encontró una clase inscrita con ese código.");
+        }
+    }
+
+    private String getCodigoclaseDeHorario(Horario horario) {
+        for (Clase clase : listaclases) {
+            if (clase.getIdentificador() == horario.getIdentificadorclase()) {
+                return clase.getCodigoclase();
+            }
+        }
+        return null; 
+    }
 }
