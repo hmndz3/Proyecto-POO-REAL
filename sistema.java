@@ -52,4 +52,27 @@ public class Sistema
         }
         return horariosUsuario;
     }
+    public void mostrarHorarioUsuario(String correoUsuario) {
+        ArrayList<Horario> horariosUsuario = obtenerHorariosUsuario(correoUsuario);
+
+        if (horariosUsuario.isEmpty()) {
+            System.out.println("No tienes clases inscritas.");
+        } else {
+            System.out.println("\n--- Horario del Usuario ---");
+            for (Horario horario : horariosUsuario) {
+            
+                for (Clase clase : listaclases) {
+                    if (clase.getIdentificador() == horario.getIdentificadorclase()) {
+                        System.out.println("Clase: " + clase.getNombre());
+                        System.out.println("Código: " + clase.getCodigoclase());
+                        System.out.println("Profesor: " + clase.getProfesor());
+                        System.out.println("Horario: " + clase.getHorario());
+                        System.out.println("Sección: " + clase.getSeccion());
+                        System.out.println("----------------------------------");
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -65,7 +65,7 @@ public class Main {
                     System.out.println("\n--- Menú de Opciones ---");
                     System.out.println("1. MOSTRAR CLASES DISPONIBLES.");
                     System.out.println("2. Inscribirse en Clase");
-                    System.out.println("3. En Desarrollo");
+                    System.out.println("3. ⁠Mostrar Horario de clases Inscritas.");
                     System.out.println("4. En Desarrollo");
                     System.out.println("5. En Desarrollo");
                     System.out.println("6. En Desarrollo");
@@ -85,6 +85,8 @@ public class Main {
                             sistema.inscribirClase(correoLogin, codigoClase);
                             break;
                         case 3:
+                            sistema.mostrarHorarioUsuario(correoLogin);
+                            break;
                         case 4:
                         case 5:
                         case 6:
