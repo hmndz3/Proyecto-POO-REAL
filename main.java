@@ -64,7 +64,7 @@ public class Main {
                 while (true) {
                     System.out.println("\n--- Menú de Opciones ---");
                     System.out.println("1. MOSTRAR CLASES DISPONIBLES.");
-                    System.out.println("2. En Desarrollo");
+                    System.out.println("2. Inscribirse en Clase");
                     System.out.println("3. En Desarrollo");
                     System.out.println("4. En Desarrollo");
                     System.out.println("5. En Desarrollo");
@@ -80,6 +80,10 @@ public class Main {
                             sistema.mostrarClasesDisponibles();
                             break;
                         case 2:
+                            System.out.print("Ingrese el código de la clase que desea inscribir: ");
+                            String codigoClase = scanner.nextLine();
+                            sistema.inscribirClase(correoLogin, codigoClase);
+                            break;
                         case 3:
                         case 4:
                         case 5:

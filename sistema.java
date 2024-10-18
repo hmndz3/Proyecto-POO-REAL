@@ -3,11 +3,13 @@ import java.util.ArrayList;
 public class Sistema 
 {
     private ArrayList<Usuario> listausuarios;    
-    private ArrayList<Clase> listaclases;        
+    private ArrayList<Clase> listaclases;   
+    private ArrayList<Horario> horarios;     
 
     public Sistema() {
         this.listausuarios = new ArrayList<>();
         this.listaclases = new ArrayList<>();
+        this.horarios = new ArrayList<>();
     }
     public void mostrarClasesDisponibles() {
         if (listaclases.isEmpty()) {
@@ -22,5 +24,23 @@ public class Sistema
 
     public void agregarClase(Clase clase) {
         listaclases.add(clase);
+    }
+
+    public void inscribirClase(String correoUsuario, String codigoClase) {
+        Clase claseSeleccionada = null;
+        for (Clase clase : listaclases) {
+            if (clase.getCodigoclase().equals(codigoClase)) {
+                claseSeleccionada = clase;
+                break;
+            }
+        }
+        if (claseSeleccionada != null) {
+            // Crear nuevo horario y agregarlo a la lista de horarios del usuario
+            Horario nuevoHorario = new Horario(horarios.size() + 1, correoUsuario, claseSeleccionada.getIdentificador(), claseSeleccionada.getHorario(), claseSeleccionada.getHorario());
+            horarios.add(nuevoHorario);
+            System.out.println("Clase inscrita con éxito: " + claseSeleccionada.getNombre());
+        } else {
+            System.out.println("Clase no encontrada.");
+        }
     }
 }
