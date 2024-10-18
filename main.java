@@ -65,7 +65,7 @@ public class Main {
                     System.out.println("\n--- Menú de Opciones ---");
                     System.out.println("1. MOSTRAR CLASES DISPONIBLES.");
                     System.out.println("2. Inscribirse en Clase");
-                    System.out.println("3. ⁠Mostrar Horario de clases Inscritas.");
+                    System.out.println("3. Mostrar Horario de clases Inscritas.");
                     System.out.println("4. Desasignar Clase");
                     System.out.println("5. En Desarrollo");
                     System.out.println("6. En Desarrollo");
