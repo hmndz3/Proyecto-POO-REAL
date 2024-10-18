@@ -5,7 +5,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean loggedIn = false;
         String correoLogin = "";
-        
+
+        Sistema sistema = new Sistema();
+        sistema.agregarClase(new Clase(1, "PROGRAMACION ORIENTADA A OBJETOS", "1CC20086020242", "ERICK MARROQUIN", "Lunes 10:00-12:00", "Sección 60"));
+        sistema.agregarClase(new Clase(1, "FISICA l", "1FF20164020242", "ZAIDY URRITIA", "MARTES 10:00-12:00", "Sección 90"));
+        sistema.agregarClase(new Clase(1, "CIUDADANIA GLOBAL", "1MM20026020242", "ANDREA CHAVEZ", "MIERCOLES 10:00-12:00", "Sección 30"));
+
         while (true) {
             System.out.println("\n--- Menú Inicial ---");
             System.out.println("1. Register");
@@ -58,7 +63,7 @@ public class Main {
             if (loggedIn) {
                 while (true) {
                     System.out.println("\n--- Menú de Opciones ---");
-                    System.out.println("1. En Desarrollo");
+                    System.out.println("1. MOSTRAR CLASES DISPONIBLES.");
                     System.out.println("2. En Desarrollo");
                     System.out.println("3. En Desarrollo");
                     System.out.println("4. En Desarrollo");
@@ -72,6 +77,8 @@ public class Main {
 
                     switch (opcionMenu2) {
                         case 1:
+                            sistema.mostrarClasesDisponibles();
+                            break;
                         case 2:
                         case 3:
                         case 4:
