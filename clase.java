@@ -42,13 +42,11 @@ public class Clase
 
     @Override
     public String toString() {
-        return "Clase{" +
-               "identificador=" + identificador +
-               ", nombre='" + nombre + '\'' +
-               ", codigoclase='" + codigoclase + '\'' +
-               ", profesor='" + profesor + '\'' +
-               ", horario='" + horario + '\'' +
-               ", seccion='" + seccion + '\'' +
-               '}';
+        return "Clase: " + nombre + "\n" +
+               "Código: " + codigoclase + "\n" +
+               "Profesor: " + profesor + "\n" +
+               "Horario: " + horario + "\n" +
+               "Sección: " + seccion + "\n" +
+               "----------------------------------";
     }
 }
