@@ -43,4 +43,13 @@ public class Sistema
             System.out.println("Clase no encontrada.");
         }
     }
+    public ArrayList<Horario> obtenerHorariosUsuario(String correoUsuario) {
+        ArrayList<Horario> horariosUsuario = new ArrayList<>();
+        for (Horario horario : horarios) {
+            if (horario.getCorreousuario().equals(correoUsuario)) {
+                horariosUsuario.add(horario);
+            }
+        }
+        return horariosUsuario;
+    }
 }
