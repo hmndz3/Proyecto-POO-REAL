@@ -8,8 +8,8 @@ public class Main {
 
         Sistema sistema = new Sistema();
         sistema.agregarClase(new Clase(1, "PROGRAMACION ORIENTADA A OBJETOS", "1CC20086020242", "ERICK MARROQUIN", "Lunes 10:00-12:00", "Sección 60"));
-        sistema.agregarClase(new Clase(1, "FISICA l", "1FF20164020242", "ZAIDY URRITIA", "MARTES 10:00-12:00", "Sección 90"));
-        sistema.agregarClase(new Clase(1, "CIUDADANIA GLOBAL", "1MM20026020242", "ANDREA CHAVEZ", "MIERCOLES 10:00-12:00", "Sección 30"));
+        sistema.agregarClase(new Clase(2, "FISICA l", "1FF20164020242", "ZAIDY URRITIA", "MARTES 10:00-12:00", "Sección 90"));
+        sistema.agregarClase(new Clase(3, "CIUDADANIA GLOBAL", "1MM20026020242", "ANDREA CHAVEZ", "MIERCOLES 10:00-12:00", "Sección 30"));
 
         while (true) {
             System.out.println("\n--- Menú Inicial ---");
