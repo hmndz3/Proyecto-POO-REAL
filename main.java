@@ -1,10 +1,12 @@
 import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean loggedIn = false;
         String correoLogin = "";
+        String nombreUsuario = "";
 
         Sistema sistema = new Sistema();
         sistema.agregarClase(new Clase(1, "PROGRAMACION ORIENTADA A OBJETOS", "1CC20086020242", "ERICK MARROQUIN", "Lunes 10:00-12:00", "Sección 60"));
@@ -74,6 +76,8 @@ public class Main {
                 System.out.println("6. En Desarrollo");
                 System.out.println("7. Cambiar datos");
                 System.out.println("8. Cerrar sesión");
+                System.out.println("9. Chat Global"); 
+                System.out.println("10. Ver Chat Global"); 
                 System.out.print("Selecciona una opción: ");
                 int opcionMenu2 = scanner.nextInt();
                 scanner.nextLine(); 
@@ -96,7 +100,6 @@ public class Main {
                         sistema.desasignarClase(correoLogin, codigoClaseADesasignar);
                         break;
                     case 5:
-                        // Nueva funcionalidad para manejar grupos
                         System.out.println("\n--- Inscribirse en Grupo ---");
                         System.out.println("1. Crear grupo de asignación");
                         System.out.println("2. Unirse a grupo de asignación");
@@ -106,16 +109,13 @@ public class Main {
 
                         switch (opcionGrupo) {
                             case 1:
-                                // Crear grupo
                                 System.out.print("Ingrese el nombre del grupo: ");
                                 String nombreGrupo = scanner.nextLine();
                                 System.out.print("Ingrese una contraseña para el grupo: ");
                                 String contrasenaGrupo = scanner.nextLine();
                                 sistema.crearGrupo(correoLogin, nombreGrupo, contrasenaGrupo);
                                 break;
-
                             case 2:
-                                // Unirse a grupo
                                 sistema.mostrarGruposDisponibles();
                                 System.out.print("Ingrese el nombre del grupo al que desea unirse: ");
                                 String grupoUnirse = scanner.nextLine();
@@ -123,7 +123,6 @@ public class Main {
                                 String contrasenaGrupoUnirse = scanner.nextLine();
                                 sistema.unirseAGrupo(correoLogin, grupoUnirse, contrasenaGrupoUnirse);
                                 break;
-
                             default:
                                 System.out.println("Opción no válida en el submenú de grupos.");
                         }
@@ -131,26 +130,33 @@ public class Main {
                     case 6:
                         System.out.println("Esta funcionalidad aún está en desarrollo.");
                         break;
-
                     case 7:
                         System.out.println("Cambiar datos del usuario");
                         System.out.print("Nuevo nombre: ");
                         String nuevoNombre = scanner.nextLine();
                         System.out.print("Nueva contraseña: ");
                         String nuevaContrasena = scanner.nextLine();
-
                         Usuario.cambiarDatos(correoLogin, nuevoNombre, nuevaContrasena);
                         System.out.println("Datos actualizados.");
                         break;
-
                     case 8:
                         System.out.println("Cerrando sesión...");
                         loggedIn = false;
                         bandera2 = false;
                         break;
-
+                    case 9:
+                        
+                        System.out.println("\n--- Chat Global ---");
+                        System.out.print("Ingrese su comentario: ");
+                        String comentario = scanner.nextLine();
+                        ChatGlobal.chatGlobal(nombreUsuario, comentario); 
+                        break;
                     default:
                         System.out.println("Opción no válida.");
+
+                    case 10:
+                        ChatGlobal.mostrarChat();
+                    
                 }
             }
         }
