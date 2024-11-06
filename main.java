@@ -70,7 +70,7 @@ public class Main {
                 System.out.println("2. Inscribirse en Clase");
                 System.out.println("3. Mostrar Horario de clases Inscritas.");
                 System.out.println("4. Desasignar Clase");
-                System.out.println("5. En Desarrollo");
+                System.out.println("5. Inscribirse en grupo"); 
                 System.out.println("6. En Desarrollo");
                 System.out.println("7. Cambiar datos");
                 System.out.println("8. Cerrar sesión");
@@ -96,6 +96,38 @@ public class Main {
                         sistema.desasignarClase(correoLogin, codigoClaseADesasignar);
                         break;
                     case 5:
+                        // Nueva funcionalidad para manejar grupos
+                        System.out.println("\n--- Inscribirse en Grupo ---");
+                        System.out.println("1. Crear grupo de asignación");
+                        System.out.println("2. Unirse a grupo de asignación");
+                        System.out.print("Selecciona una opción: ");
+                        int opcionGrupo = scanner.nextInt();
+                        scanner.nextLine(); 
+
+                        switch (opcionGrupo) {
+                            case 1:
+                                // Crear grupo
+                                System.out.print("Ingrese el nombre del grupo: ");
+                                String nombreGrupo = scanner.nextLine();
+                                System.out.print("Ingrese una contraseña para el grupo: ");
+                                String contrasenaGrupo = scanner.nextLine();
+                                sistema.crearGrupo(correoLogin, nombreGrupo, contrasenaGrupo);
+                                break;
+
+                            case 2:
+                                // Unirse a grupo
+                                sistema.mostrarGruposDisponibles();
+                                System.out.print("Ingrese el nombre del grupo al que desea unirse: ");
+                                String grupoUnirse = scanner.nextLine();
+                                System.out.print("Ingrese la contraseña del grupo: ");
+                                String contrasenaGrupoUnirse = scanner.nextLine();
+                                sistema.unirseAGrupo(correoLogin, grupoUnirse, contrasenaGrupoUnirse);
+                                break;
+
+                            default:
+                                System.out.println("Opción no válida en el submenú de grupos.");
+                        }
+                        break;
                     case 6:
                         System.out.println("Esta funcionalidad aún está en desarrollo.");
                         break;
