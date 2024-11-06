@@ -20,16 +20,31 @@ public class Main {
             System.out.println("2. Log In");
             System.out.println("3. Salir");
             System.out.print("Selecciona una opción: ");
-            int opcion = scanner.nextInt();
-            scanner.nextLine(); 
+            int opcion = 0; //La opcion empieza en 0
+            
+            try { //Exception esta funciona para que el valor siempre tenga que ser numerico, no pueden ser letras ni caracteres especiales 'NomberFormatException'.
+                opcion = Integer.parseInt(scanner.nextLine()); //Se pide el numero de oppcion que quiere selecciona el usuario.
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada no válida. Por favor, ingrese un número.");
+                continue;
+            }
 
             switch (opcion) {
                 case 1:
                     System.out.println("\nRegistro de usuario");
                     System.out.print("Nombre: ");
                     String nombre = scanner.nextLine();
-                    System.out.print("Correo: ");
-                    String correo = scanner.nextLine();
+                    String correo = ""; //Validacion de que el correo es de la UVG.
+                    boolean correoValido = false;
+                    while (!correoValido) {
+                        System.out.print("Correo: ");
+                        correo = scanner.nextLine();
+                        if (correo.endsWith("@uvg.edu.gt")) {
+                            correoValido = true;
+                        } else {
+                            System.out.println("Correo no válido. Debe usar un correo que termine en @uvg.edu.gt.");
+                        }
+                    }
                     System.out.print("Contraseña: ");
                     String contrasena = scanner.nextLine();
                     
@@ -77,8 +92,15 @@ public class Main {
                 System.out.println("9. Ver Chat Global"); 
                 System.out.println("10. Cerrar sesión");
                 System.out.print("Selecciona una opción: ");
-                int opcionMenu2 = scanner.nextInt();
-                scanner.nextLine(); 
+                int opcionMenu2 = 0; 
+                //Copy paste de lo que hicimos en el anterior.
+                try { 
+                opcionMenu2 = Integer.parseInt(scanner.nextLine()); 
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada no válida. Por favor, ingrese un número.");
+                continue;
+            }
+                
 
                 switch (opcionMenu2) {
                     case 1:
@@ -102,8 +124,13 @@ public class Main {
                         System.out.println("1. Crear grupo de asignación");
                         System.out.println("2. Unirse a grupo de asignación");
                         System.out.print("Selecciona una opción: ");
-                        int opcionGrupo = scanner.nextInt();
-                        scanner.nextLine(); 
+                        int opcionGrupo = 0;
+                        try { //Copy paste del inicio otra vez. 
+                            opcionGrupo = Integer.parseInt(scanner.nextLine()); 
+                        } catch (NumberFormatException e) {
+                            System.out.println("Entrada no válida. Por favor, ingrese un número.");
+                            continue;
+                        }
 
                         switch (opcionGrupo) {
                             case 1:
@@ -161,6 +188,7 @@ public class Main {
                     
                 }
             }
+            scanner.close();
         }
     }
 }

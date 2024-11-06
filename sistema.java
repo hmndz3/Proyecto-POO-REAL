@@ -3,14 +3,14 @@ import java.util.ArrayList;
 public class Sistema 
 {
     // Atributos de la clase sistema.
-    private ArrayList<Usuario> listausuarios;    
+    //private ArrayList<Usuario> listausuarios;    
     private ArrayList<Clase> listaclases;   
     private ArrayList<Horario> horarios;     
     private ArrayList<Grupo> grupos;    
 
     // Constructor de la clase sistema que inicializa las listas.
     public Sistema() {
-        this.listausuarios = new ArrayList<>();
+        //this.listausuarios = new ArrayList<>();
         this.listaclases = new ArrayList<>();
         this.horarios = new ArrayList<>();
         this.grupos = new ArrayList<>();

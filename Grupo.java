@@ -5,7 +5,7 @@ public class Grupo {
     private String contrasena;
     private String creador;
     private ArrayList<String> miembros;
-
+//------------------------------------------------------------------------------------------------------------------------
     // Constructor
     public Grupo(String nombre, String contrasena, String creador) {
         this.nombre = nombre;
@@ -14,7 +14,7 @@ public class Grupo {
         this.miembros = new ArrayList<>();
         this.miembros.add(creador); 
     }
-
+//------------------------------------------------------------------------------------------------------------------------
     // Getters
     public String getNombre() {
         return nombre;
@@ -27,8 +27,7 @@ public class Grupo {
     public String getCreador() {
         return creador;
     }
-
-  
+//------------------------------------------------------------------------------------------------------------------------
     public void agregarMiembro(String correoUsuario) {
         if (!miembros.contains(correoUsuario)) {
             miembros.add(correoUsuario);
@@ -37,13 +36,11 @@ public class Grupo {
             System.out.println("El usuario ya es miembro del grupo.");
         }
     }
-
-
+//------------------------------------------------------------------------------------------------------------------------
     public boolean esCreador(String correoUsuario) {
         return creador.equals(correoUsuario);
     }
-
- 
+ //------------------------------------------------------------------------------------------------------------------------
     public ArrayList<String> getMiembros() {
         return miembros;
     }
