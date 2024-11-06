@@ -14,9 +14,8 @@ public class Main {
         sistema.agregarClase(new Clase(3, "CIUDADANIA GLOBAL", "1MM20026020242", "ANDREA CHAVEZ", "MIERCOLES 10:00-12:00", "Sección 30"));
 
         boolean bandera1 = true;
-
         while (bandera1) {
-            System.out.println("\n--- Menú Inicial ---");
+            System.out.println("\nREGISTRO Y LOG IN!");
             System.out.println("1. Register");
             System.out.println("2. Log In");
             System.out.println("3. Salir");
@@ -26,7 +25,7 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Registro de usuario");
+                    System.out.println("\nRegistro de usuario");
                     System.out.print("Nombre: ");
                     String nombre = scanner.nextLine();
                     System.out.print("Correo: ");
@@ -40,7 +39,7 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.println("Iniciar sesión");
+                    System.out.println("\nIniciar sesión");
                     System.out.print("Correo: ");
                     correoLogin = scanner.nextLine();
                     System.out.print("Contraseña: ");
@@ -55,29 +54,28 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("Saliendo del sistema...");
+                    System.out.println("Gracias por usar el programa...");
                     bandera1 = false;
                     break;
 
                 default:
-                    System.out.println("Opción no válida.");
-                    break;
+                    System.out.println("La opcion que ingreso no es valida porfavor revisar...");
             }
 
             boolean bandera2 = loggedIn;
 
             while (bandera2) {
-                System.out.println("\n--- Menú de Opciones ---");
-                System.out.println("1. MOSTRAR CLASES DISPONIBLES.");
+                System.out.println("\nINSCRIPCION DE CLASES UVG ESTUDIANTES");
+                System.out.println("1. Mostrar clases disponibles.");
                 System.out.println("2. Inscribirse en Clase");
                 System.out.println("3. Mostrar Horario de clases Inscritas.");
-                System.out.println("4. Desasignar Clase");
-                System.out.println("5. Inscribirse en grupo"); 
+                System.out.println("4. Desasignar Clase.");
+                System.out.println("5. Inscribirse en grupo."); 
                 System.out.println("6. En Desarrollo");
                 System.out.println("7. Cambiar datos");
-                System.out.println("8. Cerrar sesión");
-                System.out.println("9. Chat Global"); 
-                System.out.println("10. Ver Chat Global"); 
+                System.out.println("8. Chat Global"); 
+                System.out.println("9. Ver Chat Global"); 
+                System.out.println("10. Cerrar sesión");
                 System.out.print("Selecciona una opción: ");
                 int opcionMenu2 = scanner.nextInt();
                 scanner.nextLine(); 
@@ -100,7 +98,7 @@ public class Main {
                         sistema.desasignarClase(correoLogin, codigoClaseADesasignar);
                         break;
                     case 5:
-                        System.out.println("\n--- Inscribirse en Grupo ---");
+                        System.out.println("\nINSCRIBIRSE EN GRUPO!");
                         System.out.println("1. Crear grupo de asignación");
                         System.out.println("2. Unirse a grupo de asignación");
                         System.out.print("Selecciona una opción: ");
@@ -140,22 +138,26 @@ public class Main {
                         System.out.println("Datos actualizados.");
                         break;
                     case 8:
-                        System.out.println("Cerrando sesión...");
-                        loggedIn = false;
-                        bandera2 = false;
-                        break;
-                    case 9:
-                        
-                        System.out.println("\n--- Chat Global ---");
+                            
+                        System.out.println("\nBienvenido al CHAT GLOBAL!");
                         System.out.print("Ingrese su comentario: ");
                         String comentario = scanner.nextLine();
                         ChatGlobal.chatGlobal(nombreUsuario, comentario); 
                         break;
-                    default:
-                        System.out.println("Opción no válida.");
+                            
+                    case 9:
+                        ChatGlobal.mostrarChat();
+                        break;
 
                     case 10:
-                        ChatGlobal.mostrarChat();
+                        System.out.println("Gracias por usar el programa...");
+                        loggedIn = false;
+                        bandera2 = false;
+                        break;
+
+                    default:
+                        System.out.println("La opcion que ingreso no es valida...");
+
                     
                 }
             }

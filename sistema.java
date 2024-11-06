@@ -28,7 +28,7 @@ public class Sistema
         if (listaclases.isEmpty()) {
             System.out.println("No hay clases disponibles.");
         } else {
-            System.out.println("\n--- Clases Disponibles ---");
+            System.out.println("\n--- CLASES DISPONIBLES ---");
             for (Clase clase : listaclases) {
                 System.out.println(clase);
             }
@@ -62,7 +62,7 @@ public class Sistema
         if (horariosUsuario.isEmpty()) {
             System.out.println("No tienes clases inscritas.");
         } else {
-            System.out.println("\n--- Horario del Usuario ---");
+            System.out.println("\n--- HORARIO ---");
             for (Horario horario : horariosUsuario) {
                 for (Clase clase : listaclases) {
                     if (clase.getIdentificador() == horario.getIdentificadorclase()) {
@@ -136,7 +136,7 @@ public class Sistema
         if (grupos.isEmpty()) {
             System.out.println("No hay grupos disponibles.");
         } else {
-            System.out.println("\n--- Grupos Disponibles ---");
+            System.out.println("\nGRUPOS DISPONIBLES.");
             for (Grupo grupo : grupos) {
                 System.out.println("Grupo: " + grupo.getNombre());
             }

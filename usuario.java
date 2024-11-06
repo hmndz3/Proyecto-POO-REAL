@@ -34,7 +34,6 @@ public class Usuario
             while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(",");
                 if (datos[1].equals(correo) && datos[2].equals(contrasena)) {
-                    System.out.println("Login exitoso.");
                     return true;
                 }
             }

@@ -13,7 +13,7 @@ public class ChatGlobal {
                   .append(",")
                   .append(comentario)
                   .append("\n");
-            System.out.println("Comentario guardado en el chat global.");
+            System.out.println("Comentario guardado correctamente en el chat global.");
         } catch (IOException e) {
             System.out.println("Error al escribir en el archivo CSV: " + e.getMessage());
         }
@@ -23,7 +23,7 @@ public class ChatGlobal {
     public static void mostrarChat() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String linea;
-            System.out.println("\n--- Mensajes del Chat Global ---");
+            System.out.println("\nMensajes del Chat Global");
             while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(",");
                 if (datos.length == 2) {
