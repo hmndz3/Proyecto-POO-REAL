@@ -10,7 +10,7 @@ public class Sistema
     private ArrayList<Clase> listaclases;   
     private ArrayList<Horario> horarios;     
 
-    // Constructor de la clase sistema que inicializa las listas.
+    // Constructor para inicializar las listas.
     public Sistema() {
         this.listaclases = new ArrayList<>();
         this.horarios = new ArrayList<>();
@@ -21,7 +21,7 @@ public class Sistema
         listaclases.add(clase);
     }
 
-    // Método que recorre la lista de clases y las imprime
+    // Método que sirve para identificar las clases y poder mostrarlas
     public void mostrarClasesDisponibles() {
         if (listaclases.isEmpty()) {
             System.out.println("No hay clases disponibles.");
@@ -33,7 +33,7 @@ public class Sistema
         }
     }
 
-    // Método para inscribir una clase al usuario
+    // Método para la inscripsión de clases a usuarios
     public void inscribirClase(String correoUsuario, String codigoClase) {
         Clase claseSeleccionada = null;
         for (Clase clase : listaclases) {
@@ -51,7 +51,7 @@ public class Sistema
         }
     }
 
-    // Método para mostrar el horario de un usuario en particular
+    // Método que sirve para mostrar el horario con cursos asignados.
     public void mostrarHorarioUsuario(String correoUsuario) {
         ArrayList<Horario> horariosUsuario = obtenerHorariosUsuario(correoUsuario);
 
@@ -75,7 +75,7 @@ public class Sistema
         }
     }
 
-    // Método para desasignar una clase de un usuario
+    // Método para desasignar una clase.
     public void desasignarClase(String correoUsuario, String codigoClase) {
         Horario horarioAEliminar = null;
 
@@ -115,14 +115,14 @@ public class Sistema
         return horariosUsuario;
     }
 
-    // Método para crear un nuevo grupo de asignación
+    // Método para crea un grupo de asignación.
     public void crearGrupo(String correoUsuario, String nombreGrupo, String contrasenaGrupo) {
         Grupo nuevoGrupo = new Grupo(nombreGrupo, contrasenaGrupo, correoUsuario);
         nuevoGrupo.guardarEnCSV(); // Se guarda el grupo en el archivo CSV
         System.out.println("Grupo creado exitosamente: " + nombreGrupo);
     }
 
-    // Método para mostrar los grupos disponibles
+    // Método que muestra los grupos disponibles para unirse.
     public void mostrarGruposDisponibles() {
         System.out.println("\n--- GRUPOS DISPONIBLES ---");
         try (BufferedReader reader = new BufferedReader(new FileReader("grupos.csv"))) {
@@ -130,18 +130,18 @@ public class Sistema
             boolean hayGrupos = false;
             boolean bandera = true;
             
-            // Leemos la primera línea antes de entrar al ciclo
+            
             linea = reader.readLine();
             
             while (bandera) {
                 if (linea != null) {
                     String[] datos = linea.split(",");
-                    System.out.println("Grupo: " + datos[0] + " | Creador: " + datos[2]);
-                    hayGrupos = true;
-                    // Leer la siguiente línea para la próxima iteración
+                    if (datos.length >= 3) {
+                        System.out.println("Grupo: " + datos[0] + " | Creador: " + datos[2]);
+                        hayGrupos = true;}
                     linea = reader.readLine();
-                } else {
-                    // Si no hay más líneas, detenemos el ciclo
+                } else 
+                {
                     bandera = false;
                 }
             }
@@ -153,16 +153,15 @@ public class Sistema
         }
     }
 
-    // Método para unirse a un grupo existente
+    // Método para unirse a un grupo ya creado
     public void unirseAGrupo(String correoUsuario, String nombreGrupo, String contrasenaGrupo) {
         boolean grupoEncontrado = false;
         boolean bandera = true;
         String linea = null;
 
         try (BufferedReader reader = new BufferedReader(new FileReader("grupos.csv"));
-             FileWriter writer = new FileWriter("grupos.csv", true)) {
+             FileWriter writer = new FileWriter("miembros_grupos.csv", true)) {
             
-            // Leemos la primera línea antes de iniciar el ciclo
             linea = reader.readLine();
 
             while (bandera) {
@@ -170,16 +169,16 @@ public class Sistema
                     String[] datos = linea.split(",");
                     if (datos[0].equals(nombreGrupo) && datos[1].equals(contrasenaGrupo)) {
                         System.out.println("Te has unido al grupo: " + nombreGrupo);
-                        writer.write(nombreGrupo + "," + contrasenaGrupo + "," + correoUsuario);
+                        writer.write(nombreGrupo + "," + correoUsuario);
                         writer.write("\n");
                         grupoEncontrado = true;
-                        bandera = false; // Detenemos el ciclo
-                    } else {
-                        // Leer la siguiente línea solo si no se encontró el grupo
+                        bandera = false;
+                    } else 
+                    {
                         linea = reader.readLine();
                     }
-                } else {
-                    // Si la línea es null, detenemos el ciclo
+                } else 
+                {
                     bandera = false;
                 }
             }
