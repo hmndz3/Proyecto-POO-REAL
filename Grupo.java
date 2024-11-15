@@ -1,21 +1,20 @@
-import java.util.ArrayList;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Grupo {
     private String nombre;
     private String contrasena;
     private String creador;
-    private ArrayList<String> miembros;
-//------------------------------------------------------------------------------------------------------------------------
-    // Constructor
+
+    // Constructor 
     public Grupo(String nombre, String contrasena, String creador) {
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.creador = creador;
-        this.miembros = new ArrayList<>();
-        this.miembros.add(creador); 
     }
-//------------------------------------------------------------------------------------------------------------------------
-    // Getters
+
+    // Getters de Nombre y Contraseña
     public String getNombre() {
         return nombre;
     }
@@ -27,21 +26,14 @@ public class Grupo {
     public String getCreador() {
         return creador;
     }
-//------------------------------------------------------------------------------------------------------------------------
-    public void agregarMiembro(String correoUsuario) {
-        if (!miembros.contains(correoUsuario)) {
-            miembros.add(correoUsuario);
-            System.out.println("Usuario agregado al grupo.");
-        } else {
-            System.out.println("El usuario ya es miembro del grupo.");
+
+    // Metodo para guardar los datos de los grupos en el CSV
+    public void guardarEnCSV() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("grupos.csv", true))) {
+            writer.write(nombre + "," + contrasena + "," + creador);
+            writer.newLine();
+        } catch (IOException e) {
+            System.out.println("Error al guardar el grupo en CSV.");
         }
-    }
-//------------------------------------------------------------------------------------------------------------------------
-    public boolean esCreador(String correoUsuario) {
-        return creador.equals(correoUsuario);
-    }
- //------------------------------------------------------------------------------------------------------------------------
-    public ArrayList<String> getMiembros() {
-        return miembros;
     }
 }
